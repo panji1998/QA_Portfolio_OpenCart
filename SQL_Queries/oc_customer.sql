@@ -46,7 +46,28 @@ FROM oc_customer
 WHERE date_added < '2025-01-06';
 select * from oc_customer;
 
--- 
+-- List the customer ID, customer name, a simulated salary (using customer_id), daily salary, 
+-- and annual salary of all customers, in ascending order of annual salary
+SELECT customer_id,
+       CONCAT(firstname, ' ', lastname) AS customer_name,
+       customer_id AS sal,
+       customer_id/30 AS daily_sal,
+       12*customer_id AS annsal
+FROM oc_customer
+ORDER BY annsal ASC;
+
+-- Display the customer ID, customer name, status, registration date, 
+-- and months of experience of all active customers
+SELECT customer_id,
+       CONCAT(firstname, ' ', lastname) AS customer_name,
+       status AS job,
+       date_added,
+       TIMESTAMPDIFF(MONTH, date_added, NOW()) AS exp
+FROM oc_customer
+WHERE status = 1;
+
+
+
 
 
 -- Menampilkan daftar customer aktif
