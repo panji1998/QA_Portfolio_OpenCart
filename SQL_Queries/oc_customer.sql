@@ -1,4 +1,5 @@
--- **Add data to oc_customer table**
+-- 01. Add data to oc_customer table
+
 INSERT INTO `oc_customer` 
 (`customer_group_id`, `store_id`, `language_id`, `firstname`, `lastname`, `email`, `telephone`, `password`, `custom_field`, `newsletter`, `ip`, `status`, `safe`, `commenter`, `token`, `code`, `date_added`)
 VALUES
@@ -23,8 +24,29 @@ VALUES
 (1, 0, 1, 'Sinta', 'Dewi', 'sinta.dewi@example.com', '081234567808', 'password123', NULL, 1, '192.168.1.28', 1, 0, 0, NULL, NULL, '2025-01-19 17:00:00'),
 (1, 0, 1, 'Teguh', 'Mahardika', 'teguh.mahardika@example.com', '081234567809', 'password123', NULL, 0, '192.168.1.29', 1, 0, 0, NULL, NULL, '2025-01-20 18:00:00');
 
+-- 02. Display all the information of the oc_customer table.
+select * from oc_customer;
 
--- Display all the information of the oc_customer table
+--03. Display unique status from oc_customer table.
+select distinct status from oc_customer;
+
+-- Display all the unique job groups in the descending order.
+SELECT DISTINCT customer_group_id
+FROM oc_customer
+ORDER BY customer_group_id DESC;
+
+-- Display all the details of all active customers.
+SELECT * 
+FROM oc_customer
+WHERE status = 1;
+
+-- Display all the details of customers who registered before 2025-01-06
+SELECT * 
+FROM oc_customer
+WHERE date_added < '2025-01-06';
+select * from oc_customer;
+
+-- 
 
 
 -- Menampilkan daftar customer aktif
